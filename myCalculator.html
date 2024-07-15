@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="og:site_name" content="My first website">
+  <title>My Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3f3f3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .calculator {
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      background-color: #fff;
+      padding: 20px;
+      width: 660px;
+    }
+
+    .display {
+      font-size: 24px;
+      color: black;
+      border: 2px solid b;
+      width: 96.5%;
+      text-align: right;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn {
+      font-size: 35px;
+      width: 150px;
+      height: 150px;
+      border: none;
+      margin: 5px;
+      border-radius: 50%;
+      cursor: pointer;
+      color: #fff;
+    }
+
+    .btn:hover {
+      opacity: 0.8;
+    }
+
+    .btn.operator {
+      background-color: #ff6b6b;
+    }
+
+    .btn.operator:hover {
+      background-color: #e74c3c;
+    }
+
+    .btn.number {
+      background-color: #3498db;
+    }
+
+    .btn.number:hover {
+      background-color: #2980b9;
+    }
+
+    .btn.equal {
+      background-color: #2ecc71;
+    }
+
+    .btn.equal:hover {
+      background-color: #27ae60;
+    }
+
+    .btn.clear {
+      background-color: #95a5a6;
+    }
+
+    .btn.clear:hover {
+      background-color: #7f8c8d;
+    }
+
+    button {
+      width: 100px;
+      height: 60px;
+      margin-left: 5%;
+      margin-right: 5%;
+      margin-bottom: 20%;
+      background-color: #e74c3c;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body id="body">
+  
+  <button onclick="darkmode() "> Dark Mode</button>
+
+  <div class="calculator" id="calculator">
+    <input type="text" class="display" id="display" readonly>
+    <button class="btn clear" onclick="clearDisplay()">C</button>
+    <button class="btn operator" onclick="appendToDisplay('/')">/</button>
+    <button class="btn operator" onclick="appendToDisplay('*')">*</button>
+    <button class="btn number" onclick="appendToDisplay('7')">7</button>
+    <button class="btn number" onclick="appendToDisplay('8')">8</button>
+    <button class="btn number" onclick="appendToDisplay('9')">9</button>
+    <button class="btn operator" onclick="appendToDisplay('-')">-</button>
+    <button class="btn number" onclick="appendToDisplay('4')">4</button>
+    <button class="btn number" onclick="appendToDisplay('5')">5</button>
+    <button class="btn number" onclick="appendToDisplay('6')">6</button>
+    <button class="btn operator" onclick="appendToDisplay('+')">+</button>
+    <button class="btn number" onclick="appendToDisplay('1')">1</button>
+    <button class="btn number" onclick="appendToDisplay('2')">2</button>
+    <button class="btn number" onclick="appendToDisplay('3')">3</button>
+    <button class="btn equal" onclick="calculateResult()">=</button>
+    <button class="btn number" onclick="appendToDisplay('0')">0</button>
+    <button class="btn number" onclick="appendToDisplay('.')">.</button>
+    <button class="btn operator" onclick="appendToDisplay('**')">^</button>
+    <button class="btn number">A</button>
+    <button class="btn number">K</button>
+  </div>
+
+  <button onclick="lightmode()"> Light Mode</button>
+
+  <script>
+    function appendToDisplay(value) {
+      document.getElementById('display').value += value;
+    }
+
+    function calculateResult() {
+      const displayValue = document.getElementById('display').value;
+      const result = eval(displayValue); // Note: Using 'eval' here can have security implications in real-world applications. For a basic calculator, it's fine, but be cautious in production code.
+      document.getElementById('display').value = result;
+    }
+
+    function clearDisplay() {
+      document.getElementById('display').value = '';
+    }
+
+    function darkmode() {
+      document.getElementById('body').style.backgroundColor="black"
+      document.getElementById('calculator').style.backgroundColor="grey"
+      document.getElementById('display').style.color="white"
+      document.getElementById('display').style.backgroundColor="black"
+    }
+
+    function lightmode() {
+      document.getElementById('body').style.backgroundColor="white"
+      document.getElementById('calculator').style.backgroundColor="white"
+      document.getElementById('display').style.color="black"
+      document.getElementById('display').style.backgroundColor="white"
+    }
+  </script>
+</body>
+</html>
